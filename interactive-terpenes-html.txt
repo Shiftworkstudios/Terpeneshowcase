@@ -1,0 +1,146 @@
+i<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Terpenes Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f7f0;
+        }
+        h1 {
+            color: #2c5e2e;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .search {
+            margin-bottom: 30px;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        #terpeneList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .terpene {
+            background-color: #ffffff;
+            border: 1px solid #a8d5aa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .terpene:hover {
+            transform: translateY(-5px);
+        }
+        .terpene h2 {
+            color: #2c5e2e;
+            margin-top: 0;
+            border-bottom: 2px solid #a8d5aa;
+            padding-bottom: 10px;
+        }
+        .terpene p {
+            margin: 10px 0;
+        }
+        .terpene strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comprehensive Terpenes Information</h1>
+    
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Search terpenes by name, aroma, or effects...">
+    </div>
+    
+    <div id="terpeneList"></div>
+
+    <script>
+        const terpenes = [
+            { name: "Geraniol", aroma: "Floral", effects: "Anti-inflammatory, antioxidant" },
+            { name: "Borneol", aroma: "Woody", effects: "Anti-inflammatory, analgesic" },
+            { name: "Camphene", aroma: "Earthy", effects: "Antioxidant, potential cardiovascular benefits" },
+            { name: "Delta-3-Carene", aroma: "Sweet, earthy", effects: "Anti-inflammatory, bone-protective" },
+            { name: "Eucalyptol", aroma: "Minty", effects: "Anti-inflammatory, antibacterial" },
+            { name: "α-Bisabolol", aroma: "Floral", effects: "Anti-inflammatory, antimicrobial" },
+            { name: "Limonene", aroma: "Citrus", effects: "Mood elevation, anti-anxiety" },
+            { name: "Linalool", aroma: "Floral", effects: "Sedative, anxiolytic" },
+            { name: "Valencene", aroma: "Citrus", effects: "Anti-inflammatory, potential antiallergic" },
+            { name: "Phytol", aroma: "Floral", effects: "Anxiolytic, antioxidant" },
+            { name: "Myrcene", aroma: "Earthy", effects: "Sedative, analgesic" },
+            { name: "α-Pinene", aroma: "Pine", effects: "Anti-inflammatory, bronchodilator" },
+            { name: "Ocimene", aroma: "Sweet, herbal", effects: "Antiviral, anti-inflammatory" },
+            { name: "β-Ocimene", aroma: "Sweet, herbal", effects: "Antiviral, anti-inflammatory" },
+            { name: "Trans-Nerolidol", aroma: "Floral, woody", effects: "Sedative, antiparasitic" },
+            { name: "β-Caryophyllene", aroma: "Spicy", effects: "Anti-inflammatory, analgesic" },
+            { name: "α-Humulene", aroma: "Woody, earthy", effects: "Anti-inflammatory, appetite suppressant" },
+            { name: "β-Pinene", aroma: "Pine", effects: "Anti-inflammatory, bronchodilator" },
+            { name: "Terpinolene", aroma: "Herbal", effects: "Antioxidant, sedative" },
+            { name: "Isopulegol", aroma: "Minty", effects: "Anxiolytic, gastroprotective" },
+            { name: "Guaiol", aroma: "Woody", effects: "Anti-inflammatory, antimicrobial" },
+            { name: "Caryophyllene Oxide", aroma: "Woody, spicy", effects: "Analgesic, anti-fungal" },
+            { name: "Fenchol", aroma: "Camphor-like", effects: "Antibacterial, antioxidant" },
+            { name: "Sabinene", aroma: "Woody, spicy", effects: "Anti-inflammatory, antioxidant" },
+            { name: "α-Terpineol", aroma: "Floral", effects: "Sedative, antioxidant" },
+            { name: "γ-Terpinene", aroma: "Citrusy", effects: "Antioxidant, anti-inflammatory" },
+            { name: "α-Phellandrene", aroma: "Minty", effects: "Anti-inflammatory, analgesic" },
+            { name: "Citronellol", aroma: "Citrus", effects: "Anti-inflammatory, antispasmodic" },
+            { name: "Nerol", aroma: "Sweet, rose-like", effects: "Sedative, anti-inflammatory" },
+            { name: "p-Cymene", aroma: "Woody", effects: "Anti-inflammatory, antimicrobial" },
+            { name: "Geranyl Acetate", aroma: "Floral", effects: "Anti-inflammatory, antimicrobial" },
+            { name: "Menthol", aroma: "Minty", effects: "Analgesic, anti-inflammatory" },
+            { name: "Pulegone", aroma: "Minty", effects: "Antipyretic, anti-inflammatory" },
+            { name: "α-Cedrene", aroma: "Woody", effects: "Anti-inflammatory, antiseptic" },
+            { name: "Camphor", aroma: "Minty", effects: "Analgesic, antispasmodic" },
+            { name: "Isoborneol", aroma: "Woody", effects: "Antiviral, anti-inflammatory" },
+            { name: "Farnesene", aroma: "Woody, citrus", effects: "Anti-inflammatory, antimicrobial" },
+            { name: "α-Terpinene", aroma: "Woody", effects: "Antioxidant, anti-inflammatory" },
+            { name: "Carene", aroma: "Sweet, pungent", effects: "Anti-inflammatory, bone-protective" },
+            { name: "Sabinene Hydrate", aroma: "Spicy", effects: "Antioxidant, antimicrobial" }
+        ];
+
+        function displayTerpenes(filteredTerpenes = terpenes) {
+            const terpeneList = document.getElementById('terpeneList');
+            terpeneList.innerHTML = '';
+            filteredTerpenes.forEach(terpene => {
+                const terpeneDiv = document.createElement('div');
+                terpeneDiv.className = 'terpene';
+                terpeneDiv.innerHTML = `
+                    <h2>${terpene.name}</h2>
+                    <p><strong>Aroma:</strong> ${terpene.aroma}</p>
+                    <p><strong>Effects:</strong> ${terpene.effects}</p>
+                `;
+                terpeneList.appendChild(terpeneDiv);
+            });
+        }
+
+        function searchTerpenes() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredTerpenes = terpenes.filter(terpene => 
+                terpene.name.toLowerCase().includes(searchTerm) ||
+                terpene.aroma.toLowerCase().includes(searchTerm) ||
+                terpene.effects.toLowerCase().includes(searchTerm)
+            );
+            displayTerpenes(filteredTerpenes);
+        }
+
+        document.getElementById('searchInput').addEventListener('input', searchTerpenes);
+        displayTerpenes();
+    </script>
+</body>
+</html>
